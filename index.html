@@ -29,19 +29,45 @@ body::before {
     background: rgba(0,0,0,0.5); /* negro semitransparente */
     z-index: -1; /* queda detrás de todo el contenido */
 }
-     header { 
-    background: linear-gradient(
-        90deg, 
-        rgba(255, 77, 77, 0.9),   /* rojo con 90% de opacidad */
-        rgba(255, 153, 0, 0.9)    /* naranja con 90% de opacidad */
-    );
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
-}
+    header { 
+            background: linear-gradient(
+                90deg, 
+                rgba(255, 77, 77, 0.9),   /* rojo con 90% de opacidad */
+                rgba(255, 153, 0, 0.9)    /* naranja con 90% de opacidad */
+            );
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+        }
+
         header h1 {
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        header h1::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff9900;
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+
+        header p {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 1rem;
+            color: #f1f1f1;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+            letter-spacing: 1px;
         }
         main {
             max-width: 900px;
@@ -245,6 +271,7 @@ body::before {
 
 
 </html>
+
 
 
 
