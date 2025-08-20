@@ -534,17 +534,24 @@ En este apartado, pondremos lo mejor de tu servicio, en que sos único, qué te 
 
                         <div class="col-xl-4 col-md-12 col-lg-4 mx-auto">
   			<div class="footer_widget text-center mt-4"> 
-     			 <h3 class="footer_title">
-          		Conecta con Nosotros
-      			</h3>
-     			 <form action="#" class="newsletter_form">
-        		  <input type="text" placeholder="Ingresa tu Correo o teléfono">
-         	 <button type="submit">Enviar</button>
-     			 </form>
-    		  <p class="newsletter_text">
-        	  Dejanos tu contacto para enviarte nuestras promociones
-     		 </p>
-		  </div>
+  <h3 class="footer_title">
+    Conecta con Nosotros
+  </h3>
+
+  <form action="https://formsubmit.co/entreriosmares@gmail.com" method="POST" class="newsletter_form">
+    <!-- Evita el captcha de formsubmit -->
+    <input type="hidden" name="_captcha" value="false">
+    <!-- Redirección a tu web después de enviar -->
+    <input type="hidden" name="_next" value="https://tu-dominio.com/">
+
+    <input type="text" name="contacto" placeholder="Ingresa tu Correo o teléfono" required>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p class="newsletter_text">
+    Dejanos tu contacto para enviarte nuestras promociones
+  </p>
+</div>
 		</div>
 		</div>
                     <div class="row justify-content-center">
