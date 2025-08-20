@@ -554,24 +554,60 @@
                             </div>
                         </div>
 
-			<div class="footer_widget text-center mt-4"> 
-  <h3 class="footer_title">
-      Conecta con Nosotros
-  </h3>
+			 <div class="col-xl-4 col-md-12 col-lg-4 mx-auto">
+  <div class="footer_widget text-center mt-4"> 
+    <h3 class="footer_title">Conecta con Nosotros</h3>
 
-  <form action="https://formsubmit.co/entreriosmares@gmail.com" method="POST" class="newsletter_form">
-    <!-- Evita el captcha de formsubmit -->
-    <input type="hidden" name="_captcha" value="false">
-    <!-- Redirección a tu web después de enviar -->
-    <input type="hidden" name="_next" value="https://entreriosmares.github.io/DisWebParaTuComercio-/hamburguesa/index.html">
+    <form id="contactForm" action="https://formsubmit.co/entreriosmares@gmail.com" method="POST" class="newsletter_form">
+      <!-- Evita el captcha de formsubmit -->
+      <input type="hidden" name="_captcha" value="false">
 
-    <input type="text" name="contacto" placeholder="Ingresa tu Correo o teléfono" required>
-    <button type="submit">Enviar</button>
-  </form>
+      <input type="text" name="contacto" placeholder="Ingresa tu Correo o teléfono" required>
+      <button type="submit">Enviar</button>
+    </form>
 
-  <p class="newsletter_text">
-    Dejanos tu contacto para enviarte nuestras promociones
-  </p>
+    <p class="newsletter_text">
+      Dejanos tu contacto para enviarte nuestras promociones
+    </p>
+
+    <!-- Mensaje oculto -->
+    <div id="thanksCard" 
+         style="display:none; 
+                background:#fff; 
+                border:2px solid #222; 
+                border-radius:12px; 
+                padding:20px; 
+                margin-top:15px; 
+                font-size:18px; 
+                font-weight:bold; 
+                box-shadow:0 4px 8px rgba(0,0,0,0.2);">
+      ¡Gracias!
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("contactForm");
+  const thanksCard = document.getElementById("thanksCard");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault(); // detiene el envío normal
+
+    // Enviar con fetch a formsubmit
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form)
+    }).then(() => {
+      // Mostrar mensaje de Gracias
+      thanksCard.style.display = "block";
+
+      // Esperar 500ms y redirigir
+      setTimeout(() => {
+        window.location.href = "https://entreriosmares.github.io/DisWebParaTuComercio-/hamburguesa/index.html";
+      }, 500);
+    });
+  });
+</script>
 </div>
 		</div>
                     </div>
