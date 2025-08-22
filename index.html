@@ -13,22 +13,27 @@
             box-sizing: border-box;
         }
        body {
-    font-family: 'Poppins', sans-serif;
-    background: url(fondos/fondo4.png) no-repeat center center;
-    background-size: cover;
-    color: #333;
-}
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+    }/* 🔹 Fondo Parallax */
+    .parallax {
+      background: url("fondos/fondo4.png") no-repeat center top;
+      background-size: cover;
+      position: fixed; /* se queda detrás */
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* detrás de todo */
+    }
 
-
-/* Overlay para oscurecer el fondo */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); /* negro semitransparente */
-    z-index: -1; /* queda detrás de todo el contenido */
-}
+    /* 🔹 Oscurecer el fondo */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
     header { 
             background: linear-gradient(
                 90deg, 
@@ -162,6 +167,10 @@ body::before {
     </style>
 </head>
 <body>
+    
+  <!-- 🔹 Fondo Parallax -->
+  <div class="parallax"></div>
+  <div class="overlay"></div>
     <header>
         <h1> DisWeb para tu Comercio </h1>
         <p>¡La mejor estrategia para tu negocio!</p>
@@ -267,10 +276,19 @@ body::before {
         📍 Dirección: Av. Siempre Viva 123 - Banfield - Morón - Vicente López Tel: (+54) 9 11 5340 2972  
         <br>Horario: Lunes a Domingo, 19:00 - 00:00
     </footer>
+
+     <!-- 🔹 Script Parallax -->
+  <script>
+    window.addEventListener("scroll", function() {
+      let scroll = window.scrollY;
+      document.querySelector(".parallax").style.backgroundPositionY = -(scroll * 0.3) + "px";
+    });
+  </script>
 </body>
 
 
 </html>
+
 
 
 
