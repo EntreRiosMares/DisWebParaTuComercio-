@@ -74,6 +74,23 @@
             text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
             letter-spacing: 1px;
         }
+
+        header h1 span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    header h1 span:nth-child(1) { animation-delay: 0s; }
+    header h1 span:nth-child(2) { animation-delay: 0.4s; }
+    header h1 span:nth-child(3) { animation-delay: 0.8s; }
+    header h1 span:nth-child(4) { animation-delay: 1.2s; }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+        
         main {
             max-width: 900px;
             margin: auto;
@@ -183,7 +200,9 @@
   <div class="parallax"></div>
   <div class="overlay"></div>
     <header>
-        <h1> DisWeb para tu Comercio </h1>
+         <h1>
+      <span>DisWeb</span> <span>para</span> <span>tu</span> <span>Comercio</span>
+    </h1>
         <p>¡La mejor estrategia para tu negocio!</p>
     </header>
 
@@ -318,6 +337,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 
 
 </html>
+
 
 
 
