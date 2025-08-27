@@ -163,7 +163,18 @@
 .price-table tr:hover {
     background-color: #fff5e6;
 }
+@media (max-width: 768px) {
+  body {
+    background: url("fondos/fondo6.png") no-repeat center top;
+    background-size: cover;
+    background-attachment: scroll; /* se queda fija en relación al body */
+  }
 
+  .parallax,
+  .overlay {
+    display: none; /* oculto los div duplicados en móvil */
+  }
+}
     </style>
 </head>
 <body>
@@ -307,6 +318,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 
 
 </html>
+
 
 
 
