@@ -16,7 +16,7 @@
       body {
   position: relative;
   min-height: 100vh;
-} <--/* 🔹 Fondo Parallax */
+} /* 🔹 Fondo Parallax */
    .parallax {
   background: url("fondos/fondo6.png") no-repeat center top;
   background-size: cover;
@@ -26,13 +26,6 @@
   height: 100%;
   min-height: 100vh;    /* cubre toda la pantalla como mínimo */
   z-index: -1;
-}-->
-
-        body {
-  font-family: 'Poppins', sans-serif;
-  color: #333;
-  background: url("fondos/fondo6.png") no-repeat center top fixed;
-  background-size: cover;
 }
 
     /* 🔹 Oscurecer el fondo */
@@ -192,13 +185,29 @@ header h1 span:nth-child(4) { animation-delay: 1.2s; }
 .price-table tr:hover {
     background-color: #fff5e6;
 }
-        
+        @media (max-width: 768px) {
+  body {
+    background: url("fondos/fondo6.png") no-repeat center top;
+    background-size: cover;
+    background-attachment: scroll; /* evita bugs de fixed en móviles */
+  }
+
+  /* desactivo el div parallax en móvil */
+  .parallax {
+    display: none;
+  }
+
+  /* también podés ajustar la capa oscura */
+  .overlay {
+    display: none; /* o mantenerla si querés el efecto oscuro */
+  }
+}
     </style>
 </head>
 <body>
     
-  <!-- 🔹 Fondo Parallax 
-  <div class="parallax"></div>-->
+   🔹 Fondo Parallax 
+  <div class="parallax"></div>
   <div class="overlay"></div>
    <header>
   <h1>
@@ -338,6 +347,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 
 
 </html>
+
 
 
 
