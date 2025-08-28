@@ -167,10 +167,13 @@
 .img-costado {
   position: fixed;   /* se queda fija al hacer scroll */
   right: 20px;       /* margen desde el borde derecho */
-  bottom: 50px;      /* margen desde abajo */
-  width: 250px;      /* tamaño de la imagen */
+  bottom: 60px;      /* margen desde abajo */
+  width: 220px;      /* tamaño de la imagen */
   max-width: 20%;    /* para que no ocupe demasiado en pantallas chicas */
   pointer-events: none; /* evita que tape botones o links */
+  transition: transform 0.3s ease-out; /* suaviza los cambios */
+}
+    
 }
 .price-table th, .price-table td {
     padding: 1rem;
@@ -328,6 +331,17 @@ https://entreriosmares.github.io/DisWebParaTuComercio-/ -->
 var sc_project=13161829; 
 var sc_invisible=1; 
 var sc_security="6fe10809"; 
+
+         const img = document.querySelector(".img-costado");
+
+  window.addEventListener("scroll", () => {
+    // Genera un número random entre -0.2 y +0.2
+    const randomScale = 1 + (Math.random() * 0.4 - 0.2);
+
+    // Aplica el zoom
+    img.style.transform = `scale(${randomScale})`;
+  });
+    
 </script>
 <script type="text/javascript"
 src="https://www.statcounter.com/counter/counter.js"
@@ -343,6 +357,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 
 
 </html>
+
 
 
 
