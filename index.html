@@ -167,7 +167,7 @@
 .img-costado {
   position: fixed;   /* se queda fija al hacer scroll */
   right: 20px;       /* margen desde el borde derecho */
-  bottom: 60px;      /* margen desde abajo */
+  bottom: 80px;      /* margen desde abajo */
   width: 220px;      /* tamaño de la imagen */
   max-width: 20%;    /* para que no ocupe demasiado en pantallas chicas */
   pointer-events: none; /* evita que tape botones o links */
@@ -335,11 +335,14 @@ var sc_security="6fe10809";
          const img = document.querySelector(".img-costado");
 
   window.addEventListener("scroll", () => {
-    // Genera un número random entre -0.2 y +0.2
-    const randomScale = 1 + (Math.random() * 0.4 - 0.2);
+    const scrollY = window.scrollY;               // cuánto scroll hiciste
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollY / maxScroll;    // número entre 0 y 1
 
-    // Aplica el zoom
-    img.style.transform = `scale(${randomScale})`;
+    // escala entre 0.8 (-20%) y 1.2 (+20%)
+    const scale = 0.8 + (scrollPercent * 0.4);
+
+    img.style.transform = `scale(${scale})`;
   });
     
 </script>
@@ -357,6 +360,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 
 
 </html>
+
 
 
 
