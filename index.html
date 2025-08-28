@@ -172,6 +172,8 @@
   max-width: 25%;    /* para que no ocupe demasiado en pantallas chicas */
   pointer-events: none; /* evita que tape botones o links */
   transition: transform 0.3s ease-out; /* suaviza los cambios */
+  cursor: grab; /* cambia el cursor en desktop */
+  touch-action: none; /* importante para evitar scroll al arrastrar */
 }
     
 
@@ -218,7 +220,7 @@
 
     <main>
         <h2 class="section-title">Destacados</h2>
-        <img src="pizzerotransparente.png" alt="Pizza deliciosa" class="img-costado">
+        <img src="pizzerotransparente.png" alt="Pizza deliciosa" class="img-costado" id="logo" >
         <div class="card-container">
             <div class="card">
                 <h3>Pizza Grande (Mozzarella)</h3>
@@ -325,20 +327,65 @@
       document.querySelector(".parallax").style.backgroundPositionY = -(scroll * 0.8) + "px";
     });
   </script>
-    <script>
-    const img = document.querySelector(".img-costado");
+               <script>
+const logo = document.getElementById("logo");
 
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;               // cuánto scroll hiciste
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const scrollPercent = scrollY / maxScroll;    // número entre 0 y 1
+// Variables para arrastrar
+let offsetX = 0, offsetY = 0;
+let isDragging = false;
 
-    // escala entre 0.8 (-20%) y 1.2 (+20%)
-    const scale = 0.8 + (scrollPercent * 0.4);
+// 🔹 Zoom fluido
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  const scrollPercent = scrollY / maxScroll;
+  const scale = 0.8 + (scrollPercent * 0.4);
+  
+  logo.style.transform = `scale(${scale})`;
+});
 
-    img.style.transform = `scale(${scale})`;
-  });
-    </script>
+// 🔹 Drag con touch
+logo.addEventListener("touchstart", (e) => {
+  isDragging = true;
+  const touch = e.touches[0];
+  offsetX = touch.clientX - logo.getBoundingClientRect().left;
+  offsetY = touch.clientY - logo.getBoundingClientRect().top;
+});
+
+document.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+  const touch = e.touches[0];
+  logo.style.left = (touch.clientX - offsetX) + "px";
+  logo.style.top = (touch.clientY - offsetY) + "px";
+  logo.style.right = "auto";
+  logo.style.bottom = "auto";
+  logo.style.position = "fixed";
+});
+
+document.addEventListener("touchend", () => {
+  isDragging = false;
+});
+
+// 🔹 Drag con mouse
+logo.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX - logo.getBoundingClientRect().left;
+  offsetY = e.clientY - logo.getBoundingClientRect().top;
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  logo.style.left = (e.clientX - offsetX) + "px";
+  logo.style.top = (e.clientY - offsetY) + "px";
+  logo.style.right = "auto";
+  logo.style.bottom = "auto";
+  logo.style.position = "fixed";
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+</script>
  <!-- Default Statcounter code for pizzeria 1
 https://entreriosmares.github.io/DisWebParaTuComercio-/ -->
 <script type="text/javascript">
@@ -359,6 +406,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
 </body>
 </html>
+
 
 
 
