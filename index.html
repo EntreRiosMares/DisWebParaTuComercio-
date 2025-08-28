@@ -326,19 +326,28 @@
     window.addEventListener("scroll", function() {
       let scroll = window.scrollY;
       document.querySelector(".parallax").style.backgroundPositionY = -(scroll * 0.8) + "px";
-    });
-  </script>
-               <script>
+    });<script>
 const logo = document.getElementById("logo");
 
 // Variables para arrastrar
 let offsetX = 0, offsetY = 0;
 let isDragging = false;
 
+// 🔹 Restaurar posición al cargar
+window.addEventListener("load", () => {
+  const savedPos = localStorage.getItem("logoPos");
+  if (savedPos) {
+    const { left, top } = JSON.parse(savedPos);
+    logo.style.position = "fixed";
+    logo.style.left = left;
+    logo.style.top = top;
+  }
+});
+
 // 🔹 Zoom fluido
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
-  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
   const scrollPercent = scrollY / maxScroll;
   const scale = 0.8 + (scrollPercent * 0.4);
   
@@ -365,6 +374,10 @@ document.addEventListener("touchmove", (e) => {
 
 document.addEventListener("touchend", () => {
   isDragging = false;
+  localStorage.setItem("logoPos", JSON.stringify({
+    left: logo.style.left,
+    top: logo.style.top
+  }));
 });
 
 // 🔹 Drag con mouse
@@ -385,8 +398,13 @@ document.addEventListener("mousemove", (e) => {
 
 document.addEventListener("mouseup", () => {
   isDragging = false;
+  localStorage.setItem("logoPos", JSON.stringify({
+    left: logo.style.left,
+    top: logo.style.top
+  }));
 });
 </script>
+
  <!-- Default Statcounter code for pizzeria 1
 https://entreriosmares.github.io/DisWebParaTuComercio-/ -->
 <script type="text/javascript">
@@ -407,6 +425,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
 </body>
 </html>
+
 
 
 
