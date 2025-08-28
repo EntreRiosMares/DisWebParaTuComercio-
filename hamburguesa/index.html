@@ -24,6 +24,51 @@
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+<style>
+    /* Animación entrada desde los lados */
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Burger y Reyna */
+    .titulo-burger .burger {
+      display: inline-block;
+      opacity: 0;
+      animation: slideInLeft 1s ease forwards;
+    }
+    .titulo-burger .reyna {
+      display: inline-block;
+      opacity: 0;
+      animation: slideInRight 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    /* Majestuosa por sílabas */
+    .majestuosa span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .majestuosa span:nth-child(1) { animation-delay: 1.2s; }
+    .majestuosa span:nth-child(2) { animation-delay: 1.6s; }
+    .majestuosa span:nth-child(3) { animation-delay: 2s; }
+    .majestuosa span:nth-child(4) { animation-delay: 2.4s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+	
 </head>
 
 <body>
@@ -112,23 +157,28 @@
 
     <!-- slider_area_start -->
     <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-9 col-md-9 col-md-12">
-                            <div class="slider_text text-center">
-                                <div class="deal_text">
-                                    <span>DisWeb</span>
-                                </div>
-                                <h3>Burger <br>
-                                    Reyna</h3>
-                                <h4>Magestuosa</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+       <div class="slider_active owl-carousel"> 
+  <div class="single_slider d-flex align-items-center slider_bg_1 overlay">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-xl-9 col-md-9 col-md-12">
+          <div class="slider_text text-center">
+            <div class="deal_text">
+              <span>DisWeb</span>
             </div>
+            <h3 class="titulo-burger">
+              <span class="burger">Burger</span> <br>
+              <span class="reyna">Reyna</span>
+            </h3>
+            <h4 class="majestuosa">
+              <span>Ma</span><span>jes</span><span>tuo</span><span>sa</span>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
             <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
